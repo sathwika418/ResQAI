@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0b1730">
+<title>RESQAI | AI That Saves Lives</title>
+<style>
+:root{--navy:#0b1730;--navy2:#122342;--red:#ef4444;--bg:#f4f7fb;--muted:#667085;--line:#e4eaf2;--green:#0d9b73}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial;background:var(--bg);color:#182235}
+header{background:var(--navy);color:#fff;padding:18px max(20px,calc((100% - 1180px)/2));display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px;font-weight:850;letter-spacing:.8px;font-size:22px}.logo{width:42px;height:42px;border-radius:13px;background:var(--red);display:grid;place-items:center;font-size:22px;box-shadow:0 8px 22px #ef444444}
+.brand small{display:block;font-size:10px;letter-spacing:1.7px;color:#b9c7dd;font-weight:600;margin-top:2px}
+nav{display:flex;gap:20px;flex-wrap:wrap}nav a{color:#d8e1f0;text-decoration:none;font-size:14px}nav a:hover{color:white}
+main{max-width:1180px;margin:auto;padding:28px 20px 50px}
+.hero{background:linear-gradient(120deg,#101f3d,#18365b);color:white;border-radius:24px;padding:34px;display:grid;grid-template-columns:1.4fr .8fr;gap:24px;align-items:center;box-shadow:0 14px 38px #12234220}
+.eyebrow{color:#ffb4b4;font-size:12px;font-weight:800;letter-spacing:1.8px;text-transform:uppercase}
+h1{font-size:clamp(30px,4vw,48px);line-height:1.08;margin:12px 0}h1 span{color:#ff7777}.hero p{color:#d3deed;line-height:1.7;max-width:620px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+button,.btn{border:0;border-radius:12px;padding:13px 17px;font-weight:750;font-size:14px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:8px}
+.primary{background:var(--red);color:white;box-shadow:0 8px 20px #ef444433}.secondary{background:#ffffff16;color:white;border:1px solid #ffffff35}.whitebtn{background:white;color:var(--navy)}
+.sos-card{background:#fff;color:var(--navy);border-radius:20px;padding:23px;text-align:center}.sos-circle{width:142px;height:142px;margin:8px auto 14px;border:12px solid #fee2e2;border-radius:50%;display:grid;place-items:center;background:var(--red);color:white;font-size:30px;font-weight:900;box-shadow:0 0 0 8px #fff,0 0 0 10px #fca5a5}.sos-card p{font-size:12px;color:var(--muted);margin-bottom:0}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:20px 0}.stat,.panel{background:white;border:1px solid var(--line);border-radius:18px;padding:20px}.stat-label{font-size:12px;color:var(--muted);font-weight:700}.stat-value{font-size:23px;font-weight:850;margin-top:8px}.dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--green);margin-right:6px}
+.grid{display:grid;grid-template-columns:1.1fr .9fr;gap:18px}.panel h2{margin:0 0 7px;font-size:18px}.sub{font-size:13px;color:var(--muted);margin:0 0 18px;line-height:1.5}
+.location-box{background:#f7f9fc;border:1px solid var(--line);border-radius:13px;padding:15px;display:flex;align-items:flex-start;gap:12px}.icon{width:38px;height:38px;border-radius:11px;background:#e8efff;display:grid;place-items:center;font-size:18px;flex-shrink:0}.location-box strong{font-size:14px}.location-box p{font-size:12px;color:var(--muted);margin:5px 0 0;word-break:break-word}.smallbtn{padding:9px 12px;border-radius:9px;background:var(--navy);color:white;font-size:12px;margin-top:12px}
+.feature-list{display:grid;gap:12px}.feature{display:flex;gap:12px;align-items:center;padding:12px 0;border-bottom:1px solid #edf0f5}.feature:last-child{border:0}.feature strong{font-size:14px}.feature p{margin:4px 0 0;font-size:12px;color:var(--muted)}
+.alert{padding:14px;border-radius:12px;background:#fff5f5;border:1px solid #fecaca;color:#9f2525;font-size:13px;line-height:1.5}
+footer{text-align:center;color:#7b8798;font-size:12px;padding:25px 15px 0;line-height:1.7}
+.toast{display:none;margin-top:12px;padding:12px;border-radius:10px;background:#ecfdf5;color:#08684e;font-size:13px}
+@media(max-width:760px){.hero{grid-template-columns:1fr;padding:24px}.sos-card{max-width:400px;width:100%;margin:auto}.grid{grid-template-columns:1fr}.stats{grid-template-columns:1fr}.stat{padding:15px}.stat-value{font-size:20px}nav{gap:12px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="brand"><div class="logo">✚</div><div>RESQAI<small>AI THAT SAVES LIVES</small></div></div>
+  <nav><a href="#dashboard">Dashboard</a><a href="#location">My Location</a><a href="#support">Emergency Support</a><a href="#about">About</a></nav>
+</header>
+<main id="dashboard">
+  <section class="hero">
+    <div>
+      <div class="eyebrow">Disaster response • Emergency coordination</div>
+      <h1>When every second counts,<br><span>help starts here.</span></h1>
+      <p>RESQAI is a concept platform designed to support disaster preparedness and emergency coordination with location sharing, safety information, and faster access to help.</p>
+      <div class="hero-actions"><button class="primary" onclick="shareLocation()">⌖ Share my location</button><a class="btn secondary" href="#support">Explore safety tools →</a></div>
+    </div>
+    <div class="sos-card">
+      <div style="font-weight:850;font-size:14px">EMERGENCY SOS</div>
+      <button class="sos-circle" onclick="sosDemo()" aria-label="Try SOS demo">SOS</button>
+      <strong>Need urgent help?</strong><p>Tap to open the emergency demo flow.</p>
+      <div id="sosMessage" class="toast"></div>
+    </div>
+  </section>
+  <section class="stats">
+    <div class="stat"><div class="stat-label">PLATFORM STATUS</div><div class="stat-value"><span class="dot"></span>Demo is online</div></div>
+    <div class="stat"><div class="stat-label">LOCATION SHARING</div><div class="stat-value" id="locationStatus">Not shared yet</div></div>
+    <div class="stat"><div class="stat-label">SAFETY APPROACH</div><div class="stat-value">People first</div></div>
+  </section>
+  <section class="grid">
+    <div class="panel" id="location">
+      <h2>📍 My location</h2><p class="sub">Use your device's location permission to get coordinates. Your location is not uploaded to a server by this demo.</p>
+      <div class="location-box"><div class="icon">🧭</div><div><strong>Current coordinates</strong><p id="coordinates">Location has not been requested.</p><p id="accuracy"></p></div></div>
+      <button class="smallbtn" onclick="getLocation()">Get exact latitude & longitude</button>
+      <button class="smallbtn" onclick="copyCoordinates()" style="background:#e8efff;color:#14294a;margin-left:5px">Copy coordinates</button>
+      <div id="locationMessage" class="toast"></div>
+    </div>
+    <div class="panel" id="support">
+      <h2>🛟 Emergency support</h2><p class="sub">Quick links and safety actions for a real emergency.</p>
+      <div class="feature-list">
+        <div class="feature"><div class="icon">📞</div><div><strong>India emergency helpline</strong><p>Call 112 for emergency assistance.</p></div><a class="btn whitebtn" href="tel:112" style="margin-left:auto;padding:9px 12px">Call 112</a></div>
+        <div class="feature"><div class="icon">🏥</div><div><strong>Find nearby hospitals</strong><p>Open a map search around your device location.</p></div><a class="btn whitebtn" href="https://www.google.com/maps/search/hospitals+near+me/" target="_blank" rel="noopener" style="margin-left:auto;padding:9px 12px">Find</a></div>
+        <div class="feature"><div class="icon">📍</div><div><strong>Share location with someone</strong><p>Copy your coordinates and send them to a trusted contact.</p></div></div>
+      </div>
+    </div>
+  </section>
+  <section class="panel" style="margin-top:18px" id="about">
+    <h2>About RESQAI</h2><p class="sub" style="margin-bottom:0">RESQAI — “AI That Saves Lives When Every Second Counts” — is an AI-powered disaster response and emergency coordination project concept. The planned platform brings together SOS alerts, GPS-based location sharing, disaster warnings, safe-route guidance, nearby hospitals and shelters, and communication between people and response teams.</p>
+    <div class="alert" style="margin-top:16px"><strong>Important:</strong> This is a student project demo. SOS does not alert rescue teams, and no live disaster feed, hospital verification, or backend dispatch system is connected. In a real emergency in India, call 112 directly and follow official local instructions.</div>
+  </section>
+  <footer>RESQAI • Student project prototype • CSE (AI & ML), VBIT<br>Built to demonstrate an emergency coordination interface; not a substitute for official emergency services.</footer>
+</main>
+<script>
+let coords = null;
+function showToast(id,msg){const el=document.getElementById(id);el.textContent=msg;el.style.display='block';}
+function getLocation(){
+ const el=document.getElementById('coordinates');
+ if(!navigator.geolocation){el.textContent='Geolocation is not supported by this browser.';return;}
+ el.textContent='Requesting location permission…';
+ navigator.geolocation.getCurrentPosition(pos=>{
+   coords={lat:pos.coords.latitude,lon:pos.coords.longitude};
+   el.textContent='Latitude: '+coords.lat.toFixed(6)+' | Longitude: '+coords.lon.toFixed(6);
+   document.getElementById('accuracy').textContent='Accuracy: approximately '+Math.round(pos.coords.accuracy)+' metres';
+   document.getElementById('locationStatus').textContent='Coordinates available';
+   showToast('locationMessage','Location found on this device. It has not been sent to a server.');
+ },err=>{
+   const messages={1:'Permission denied. Allow location access in your browser settings.',2:'Location unavailable. Check GPS/location settings.',3:'Location request timed out. Try again outdoors.'};
+   el.textContent=messages[err.code]||'Could not get location. Try again.';
+ },{enableHighAccuracy:true,timeout:15000,maximumAge:0});
+}
+function copyCoordinates(){
+ if(!coords){showToast('locationMessage','Get your location first, then copy coordinates.');return;}
+ const text='Latitude: '+coords.lat.toFixed(6)+', Longitude: '+coords.lon.toFixed(6);
+ if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(text).then(()=>showToast('locationMessage','Coordinates copied. You can paste them into a message.')).catch(()=>prompt('Copy coordinates:',text));}
+ else prompt('Copy coordinates:',text);
+}
+function shareLocation(){getLocation();}
+function sosDemo(){
+ const el=document.getElementById('sosMessage');el.style.display='block';
+ el.textContent='Demo only: no rescue team has been notified. If you are in danger in India, call 112 now.';
+}
+</script>
+</body>
+</html>
